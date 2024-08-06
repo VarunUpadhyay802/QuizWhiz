@@ -14,15 +14,17 @@
 }
 
 .score {
-  border: 6px solid rgba(128, 128, 128, 0.345);
+  /* border: 6px solid rgba(128, 128, 128, 0.345); */
   font-size: 1.2rem;
   color: #a45eda;
   background-color: white;
   border-radius: 50%;
-  padding: 3rem 1.8rem;
+  padding: 3rem 3rem;
   margin: 2rem;
   font-weight: 600;
   text-align: center;
+  width: 12.8rem;
+  height: 12.8rem;
 }
 
 .score span {
