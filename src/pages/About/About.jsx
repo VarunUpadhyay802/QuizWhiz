@@ -111,7 +111,7 @@ export default function About() {
                 spacing={'20'}
                 mt={16}
                 mx={'auto'}>
-                {testimonials.map((cardInfo, index) => (
+                {testimonials?.map((cardInfo, index) => (
                     <TestimonialCard {...cardInfo} key={index} index={index} />
                 ))}
             </SimpleGrid>

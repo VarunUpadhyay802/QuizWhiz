@@ -34,7 +34,7 @@ const Home = () => {
                 />
             </div>
             {
-                (url === '' || questions.length === 0)
+                (url === '' || questions?.length === 0)
                     ?
                     <div className="container my-3">
                         <Text mb={'4'} fontSize='4xl'>Start your Quiz Now</Text>

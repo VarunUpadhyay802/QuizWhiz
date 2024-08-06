@@ -15,7 +15,7 @@ const ReviewAnswerBox = ({ question, options, category, num, myAnswer, rightAnsw
                 </div>
                 <div className="q-box_body">
                     {
-                        options.map((index) => {
+                        options?.map((index) => {
                             let tempClass = ''
                             let tempIcon = ''
                             if (index === rightAnswer) {
