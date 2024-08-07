@@ -23,7 +23,7 @@ const Home = () => {
 
     return (
         <>
-            <div className="d-flex justify-content-center align-items-center">
+            <div className="d-flex justify-content-center align-items-center homepage">
                 <HashLoader
                     color={'#3585c1'}
                     loading={loading}
@@ -36,8 +36,8 @@ const Home = () => {
             {
                 (url === '' || questions?.length === 0)
                     ?
-                    <div className="container my-3">
-                        <Text mb={'4'} fontSize='4xl'>Start your Quiz Now</Text>
+                    <div className="container my-1">
+                        <Text mb={'4'} fontSize='4xl' style={{textAlign:"center"}}>Start your Quiz Now</Text>
                         <hr />
                         <Form handleSubmit={handleSubmit} onChange={onChange} />
                     </div>

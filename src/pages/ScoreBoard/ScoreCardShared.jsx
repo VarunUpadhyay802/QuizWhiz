@@ -5,29 +5,34 @@ import { AiOutlineHome, AiOutlineEye } from "react-icons/ai";
 import { BiReset } from "react-icons/bi";
 import { BsShare } from "react-icons/bs";
 import quizContext from "../../context/quizContext";
-import { Link as ReachLink } from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CountUp from "react-countup";
 
-const Scoreboard = (props) => {
-  const context = useContext(quizContext);
-  const { setNext, setScore, setAnswerList } = context;
-  const { total_que, correct_que, wrong_que } = props;
-  let percentage = (correct_que / total_que) * 100;
-  let Attempted = ((correct_que + wrong_que) / total_que) * 100;
-
+const ScoreCardShared = (props) => {
+//   const context = useContext(quizContext);
+//   const { setNext, setScore, setAnswerList } = context;
+//   const { total_que, correct_que, wrong_que } = props;
+//   let percentage = (correct_que / total_que) * 100;
+//   let Attempted = ((correct_que + wrong_que) / total_que) * 100;
+  const navigate = useNavigate();
   const handleGoHome = () => {
-    window.location.reload();
+    navigate("/");
   };
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const total_que = queryParams.get("total");
+  const correct_que = queryParams.get("correct");
+  const wrong_que = queryParams.get("wrong");
+  const percentage = queryParams.get("percentage");
 
-  const handlePlayAgain = () => {
-    setNext(0);
-    setScore({ rightAnswers: 0, wrongAnswers: 0 });
-    setAnswerList([]);
-  };
+  //   const handlePlayAgain = () => {
+  //     setNext(0);
+  //     setScore({ rightAnswers: 0, wrongAnswers: 0 });
+  //     setAnswerList([]);
+  //   };
   const generateShareableLink = () => {
     const shareUrl = `${
       window.location.origin
@@ -46,53 +51,52 @@ const Scoreboard = (props) => {
         <div className="score">
           Your Score <br />
           <span>
-          <CountUp end={percentage.toFixed(2)} /><small>%</small>
-  
+            {percentage.toFixed(2)} <small>%</small>
           </span>
         </div>
         <div className="point-table">
-          <div className="semi-table ">
+          <div className="semi-table">
             <div
               style={{ backgroundColor: "#A45EDA" }}
-              className="circle "
+              className="circle"
             ></div>
-            <div className="mx-2 ">
+            {/* <div className="mx-2">
               <div style={{ color: "#A45EDA" }} className="point">
                 {Attempted.toFixed(2)}%
               </div>
               <div className="point-info">Attempted</div>
-            </div>
+            </div> */}
           </div>
-          <div className="semi-table ">
+          <div className="semi-table">
             <div
               style={{ backgroundColor: "#A45EDA" }}
-              className="circle "
+              className="circle"
             ></div>
-            <div className="mx-2 ">
+            <div className="mx-2">
               <div style={{ color: "#A45EDA" }} className="point">
                 {total_que}
               </div>
               <div className="point-info">Total Questions</div>
             </div>
           </div>
-          <div className="semi-table ">
+          <div className="semi-table">
             <div
               style={{ backgroundColor: "rgb(6 143 86)" }}
-              className="circle "
+              className="circle"
             ></div>
-            <div className="mx-2 ">
+            <div className="mx-2">
               <div style={{ color: "rgb(6 143 86)" }} className="point">
                 {correct_que}
               </div>
               <div className="point-info">Correct</div>
             </div>
           </div>
-          <div className="semi-table ">
+          <div className="semi-table">
             <div
               style={{ backgroundColor: "rgb(223 75 75)" }}
-              className="circle "
+              className="circle"
             ></div>
-            <div className="mx-2 ">
+            <div className="mx-2">
               <div style={{ color: "rgb(223 75 75)" }} className="point">
                 {wrong_que}
               </div>
@@ -112,7 +116,7 @@ const Scoreboard = (props) => {
               </div>
               <div className="footer-text">Share Score</div>
             </div>
-            <div className="text-center">
+            {/* <div className="text-center">
               <ReachLink to="/review">
                 <div
                   style={{ backgroundColor: "#BF8D6F" }}
@@ -128,7 +132,7 @@ const Scoreboard = (props) => {
                 <BiReset />
               </div>
               <div className="footer-text">Play Again</div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -136,4 +140,4 @@ const Scoreboard = (props) => {
   );
 };
 
-export default Scoreboard;
+export default ScoreCardShared;

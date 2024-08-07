@@ -14,7 +14,7 @@ const Form = (props) => {
 
     return (
         <>
-            <form className='mt-2' onSubmit={handleSubmit}>
+            <form className='mt-2 form1' onSubmit={handleSubmit}>
 
                 <div className="mb-3">
                     <label htmlFor="number" className="form-label">Number of Questions:</label>
@@ -48,7 +48,7 @@ const Form = (props) => {
                         }
                     </select>
                 </div>
-                <button type="submit" className="btn btn-primary">Start Quiz</button>
+                <button type="submit" className="btn btn-primary startBtn">Start Quiz</button>
             </form>
         </>
     )
